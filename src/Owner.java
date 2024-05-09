@@ -1,11 +1,14 @@
-
 import java.util.Scanner;
+
 public class Owner {
     private Scanner scanner;
+    private int hoursWorked;
+    private final int standardHours = 1000;
 
     public Owner() {
         this.scanner = new Scanner(System.in);
     }
+
     public void owner() {
         boolean exit = false;
         while (!exit) {
@@ -30,7 +33,7 @@ public class Owner {
                     calculateProfit();
                     break;
                 case 4:
-                    calcucatePremium();
+                    calculatePremium(); // Виправлено назву методу
                     break;
                 case 5:
                     exit = true;
@@ -40,16 +43,18 @@ public class Owner {
             }
         }
     }
+
     private void calculateSalary() {
         System.out.println("Введіть кількість годин, які працівник працював:");
         int hours = scanner.nextInt();
 
-        System.out.println("Введіть зарплату за годинну:");
+        System.out.println("Введіть зарплату за годину:");
         double hourPrice = scanner.nextDouble();
 
-        double Salary = hours * hourPrice;
-        System.out.println("Загальна зарплата : " + Salary);
+        double salary = hours * hourPrice;
+        System.out.println("Загальна зарплата : " + salary);
     }
+
     private void calculateVacation() {
         System.out.println("Введіть стаж роботи працівника (у роках):");
         int years = scanner.nextInt();
@@ -69,6 +74,7 @@ public class Owner {
 
         System.out.println("Днів відпустки: " + vacationDays);
     }
+
     private void calculateProfit() {
         System.out.println("Введіть дохід магазину :");
         double income = scanner.nextDouble();
@@ -79,10 +85,19 @@ public class Owner {
         double profit = income - costs;
 
         System.out.println("Прибуток магазину за цей період: " + profit);
-
     }
-    private void calcucatePremium(){
 
+    private void calculatePremium() {
+        System.out.print("Введіть кількість годин, які працював працівник: ");
+        int workedHours = scanner.nextInt();
+
+        int extraHours = workedHours - standardHours;
+        if (extraHours > 0) {
+            int bonus = (extraHours / 10) * 20;
+            System.out.println("Працівник отримує премію у розмірі:" + bonus);
+        } else {
+            System.out.println("Працівник не отримує премії.");
+        }
     }
 
     public static void main(String[] args) {
@@ -90,3 +105,4 @@ public class Owner {
         owner.owner();
     }
 }
+
