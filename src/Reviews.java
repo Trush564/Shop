@@ -1,17 +1,24 @@
 
 public class Reviews {
-    private String comment;
-    public Reviews(){
-
+    private String[] comments;
+    private int count;
+    public Reviews() {
     }
+
+    public Reviews(int capacity) {
+        comments = new String[capacity];
+        count = 0;
+    }
+
     public void addComment(String comment) {
-        System.out.println(comment);
+        if (count < comments.length) {
+            comments[count] = comment;
+            count++;
+        } else {
+            System.out.println("Не вдалося додати коментар.");
+        }
     }
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+    public String [] getComments() {
+        return comments;
     }
 }

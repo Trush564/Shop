@@ -13,7 +13,8 @@ public class Owner {
             System.out.println("1. Вирахувати зарплату ");
             System.out.println("2. Вирахувати відпустку для працівників");
             System.out.println("3. Розрахувати прибуток");
-            System.out.println("4. Вийти");
+            System.out.println("4. Розрахувати премію для працівника");
+            System.out.println("5. Вийти");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -29,6 +30,9 @@ public class Owner {
                     calculateProfit();
                     break;
                 case 4:
+                    calcucatePremium();
+                    break;
+                case 5:
                     exit = true;
                     break;
                 default:
@@ -75,6 +79,9 @@ public class Owner {
         double profit = income - costs;
 
         System.out.println("Прибуток магазину за цей період: " + profit);
+
+    }
+    private void calcucatePremium(){
 
     }
 

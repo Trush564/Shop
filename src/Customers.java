@@ -1,12 +1,18 @@
 import java.util.Scanner;
 
 public class Customers {
-    Reviews reviews = new Reviews();
+    Reviews reviews = new Reviews(100);
     private  Scanner scanner;
+    private String[] customerComments;
+    private int commentIndex;
+
 
     public Customers(Scanner scanner) {
 
         this.scanner = scanner;
+        customerComments = new String[100];
+        commentIndex = 0;
+
     }
 
     public void customers() {
@@ -33,7 +39,8 @@ public class Customers {
                 case 2:
                     System.out.println("Напишіть ваш відгук:");
                     String reviewText = scanner.nextLine();
-                    reviews.addComment(reviewText);
+                    customerComments[commentIndex++] = reviewText;
+
                     System.out.println("Дякуємо за відгук!");
                     break;
                 case 3:
@@ -43,6 +50,23 @@ public class Customers {
                     System.out.println("Клас");
                     System.out.println("Хороші продавці");
                     System.out.println("Гарний магазин ");
+                    if (reviews != null) {
+                        String[] comments = reviews.getComments();
+                        if (comments != null) {
+                            for (String comment : comments) {
+                                if (comment != null) {
+                                    System.out.println(comment);
+                                }
+                            }
+                        }
+                    }
+                    if (customerComments != null) {
+                        for (String comment : customerComments) {
+                            if (comment != null) {
+                                System.out.println(comment);
+                            }
+                        }
+                    }
                     break;
                 case 4:
                     ch = false;
